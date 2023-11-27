@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="mx-auto col-8 my-5">
-        <h2>Nouvelle marque</h2>
-    </div>
+        <h2>Modifier {{$marque->nom}}</h2>
 
+    </div>
     <div class="d-flex mx-auto col-8 justify-content-center">
 
         @foreach ($errors->all() as $error)
@@ -20,12 +20,12 @@
                 <input type="file" class="mb-2" name="photo" id="photo">
 
                 <label for="nom">Nom de la marque:</label>
-                <input class="mb-2" type="text" name="nom" id="name" value="{{ old('nom') }}">
+                <input class="mb-2" type="text" name="nom" id="name" value="{{ old('nom', $marque->nom) }}">
                 @error('nom')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
 
-                <button type="submit" class="btn btn-outline-light col-4">Ajouter</button>
+                <button type="submit" class="btn btn-outline-light col-4">Modifier</button>
             </form>
         </div>
     @endsection

@@ -35,8 +35,10 @@
 
 </body>
 
-<footer>
-    
+<footer style="background-color: #0C4085" class="sticky-bottom text-white bg-gray-800 text-gray-300 py-8 d-flex align-items-center">
+    <div class="max-w-5xl mx-auto px-3">
+        <p class="text-center text-xl">Literie3000 &copy; {{ date('Y') }}</p>
+    </div>
 </footer>
 
 </html>

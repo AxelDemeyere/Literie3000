@@ -12,7 +12,6 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase">{{ $dimension->taille }}</h5>
                             <a href="/dimension/{{ $dimension->id }}/modifier" class="card-link">Modifier</a>
-                            <a href="/dimension/{{ $dimension->id }}/supprimer" class="card-link">Supprimer</a>
                         </div>
                     </div>
                 @endforeach

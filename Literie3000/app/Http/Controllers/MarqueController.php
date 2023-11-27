@@ -45,11 +45,38 @@ public function store(Request $request) {
 
 }
 
-public function destroy($id) {
+public function edit($id)
+{
+    $marque = Marque::findOrFail($id);
 
-    Marque::destroy($id);
-    
-    return redirect('/marques');
+    return view('marques/edit', [
+        'marque' => $marque,
+    ]);
+}
+
+public function update(Request $request, $id) {
+
+    $marque = Marque::findOrFail($id);
+
+    $request->validate([
+        'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'nom' => 'required|min:1',
+        ]);
+
+        $marque->nom = $request->nom;
+
+
+        if ($request->hasFile('photo')) {
+            $photoName = time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('photos'), $photoName);
+            $marque->photo = $photoName;
+        }
+
+
+        $marque->save();
+
+        return redirect ('/marques');
+
 }
 }
 

@@ -35,6 +35,30 @@ public function store(Request $request) {
 
 }
 
+public function edit($id)
+{
+    $dimension = Dimension::findOrFail($id);
+
+    return view('dimensions/edit', [
+        'dimension' => $dimension,
+    ]);
+}
+
+public function update(Request $request, $id) {
+
+    $dimension = Dimension::findOrFail($id);
+
+    $request->validate([
+        'taille' => 'required|min:1',
+        ]);
+
+        $dimension->taille = $request->taille;
+
+        $dimension->save();
+
+        return redirect ('/dimensions');
+    }
+
 public function destroy($id) {
 
     Dimension::destroy($id);

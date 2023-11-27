@@ -2,7 +2,7 @@
 @section('content')
     <div class="mx-auto col-8">
         <div class="my-5">
-            <h2>Nos marques</h2>
+            <h2 class="">Nos marques partenaires</h2>
             <p><a  href="/marques/creer">Ajouter nouvelle marque</a></p>
         </div>
         <div class="d-flex justify-content-center">
@@ -16,7 +16,6 @@
 
 
                             <a href="/marque/{{ $marque->id }}/modifier" class="card-link">Modifier</a>
-                            <a href="/marque/{{ $marque->id }}/supprimer" class="card-link">Supprimer</a>
                         </div>
                     </div>
                 @endforeach

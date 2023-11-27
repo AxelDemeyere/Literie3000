@@ -36,10 +36,13 @@ Route::get("/produit/{id}/supprimer", [ProduitController::class,"destroy"]);
 Route::get("/marques", [MarqueController::class,"index"]);
 Route::get("/marques/creer", [MarqueController::class,"create"]);
 Route::post("/marques/creer", [MarqueController::class,"store"]);
-Route::get("/marque/{id}/supprimer", [MarqueController::class,"destroy"]);
+Route::get("/marque/{id}/modifier", [MarqueController::class,"edit"]);
+Route::post("/marque/{id}/modifier", [MarqueController::class,"update"]);
+
 
 //CRUD Dimensions
 Route::get("/dimensions", [DimensionController::class,"index"]);
 Route::get("/dimensions/creer", [DimensionController::class,"create"]);
 Route::post("/dimensions/creer", [DimensionController::class,"store"]);
-Route::get("/dimension/{id}/supprimer", [DimensionController::class,"destroy"]);
+Route::get("/dimension/{id}/modifier", [DimensionController::class,"edit"]);
+Route::post("/dimension/{id}/modifier", [DimensionController::class,"update"]);

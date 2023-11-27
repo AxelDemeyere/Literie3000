@@ -11,7 +11,7 @@
 
 
         <div style="background-color: #0C4085" class="d-flex justify-content-center border rounded shadow col-6 py-5">
-            <form class="d-flex flex-column col-6 text-white align-items-center" action="" method="post"
+            <form class="d-flex flex-column col-6 text-white" action="" method="post"
                 enctype="multipart/form-data">
                 @csrf
 

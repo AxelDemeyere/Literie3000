@@ -23,3 +23,4 @@ return new class extends Migration
     }
     // Cette fonction down() supprimera la colonne photo de la table produits lorsque la migration est annulée.
 };
+

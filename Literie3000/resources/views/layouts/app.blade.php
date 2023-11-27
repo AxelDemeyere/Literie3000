@@ -12,7 +12,7 @@
 <header style="background-color: #0C4085" class="shadow-lg d-flex justify-content-center">
     <div class="d-flex align-items-center justify-content-between col-8">
         <div class="">
-            <a href="/home">
+            <a href="/">
                 <img src="/upload/logo.png" alt="logo">
             </a>
         </div>

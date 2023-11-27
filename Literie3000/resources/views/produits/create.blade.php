@@ -18,11 +18,18 @@
                 <label for="photo">Photo du produit :</label>
                 <input type="file" class="mb-2" name="photo" id="photo">
 
-                <label for="nom">Nom du produit:</label>
-                <input class="mb-2" type="text" name="nom" id="name" value="{{ old('nom') }}">
-                @error('nom')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
+
+                    <label for="marque" class="block">Marque</label>
+                    <select name="marque" id="marque" class="mb-2">
+                        @foreach ($marques as $marque)
+                            {{-- <option @selected($marque->id == old('marque')) value="{{ $marque->id }}">{{ $marque->name }}</option> --}}
+                            <option value="{{$marque->id}}">{{$marque->nom}}</option>
+                        @endforeach
+                    </select>
+                    @error('marque')
+                        <div class="">{{ $message }}</div>
+                    @enderror
+
 
                 <label for="ref">Référence :</label>
                 <textarea class="mb-2" name="ref" id="details" cols="23" rows="2" value="{{ old('ref') }}"></textarea>
@@ -30,16 +37,15 @@
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
 
-                <label for="longueur">Longueur :</label>
-                <input class="mb-2" type="text" name="longueur" id="longueur" value="{{ old('longueur') }}">
-                @error('longueur')
-                    <div class="text-red-500">{{ $message }}</div>
-                @enderror
-
-                <label for="largeur">Largeur :</label>
-                <input class="mb-2" type="text" name="largeur" id="largeur" value="{{ old('largeur') }}">
-                @error('largeur')
-                    <div class="text-red-500">{{ $message }}</div>
+                <label for="dimension" class="block">Dimensions</label>
+                <select name="dimension" id="dimension" class="mb-2">
+                    @foreach ($dimensions as $dimension)
+                        {{-- <option @selected($marque->id == old('marque')) value="{{ $marque->id }}">{{ $marque->name }}</option> --}}
+                        <option value="{{$dimension->id}}">{{$dimension->taille}}</option>
+                    @endforeach
+                </select>
+                @error('marque')
+                    <div class="">{{ $message }}</div>
                 @enderror
 
                 <label for="prix">Prix </label>

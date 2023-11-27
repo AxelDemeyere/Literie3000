@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="mx-auto col-8 my-5">
-        <h2>Modifier {{ $produit->nom }} </h2>
+        <h2>Modifier {{ $produit->marque->nom }} {{$produit->ref}} </h2>
     </div>
     <div class="d-flex mx-auto col-8 justify-content-center">
 
@@ -19,9 +19,14 @@
                     <div class="">{{ $message }}</div>
                 @enderror
 
-                <label for="nom">Nom du produit:</label>
-                <input class="mb-2" type="text" name="nom" id="name" value="{{ old('nom', $produit->nom) }}">
-                @error('nom')
+                <label for="marque" class="block">Marque</label>
+                <select name="marque" id="marque" class="mb-2">
+                    @foreach ($marques as $marque)
+                        {{-- <option @selected($marque->id == old('marque')) value="{{ $marque->id }}">{{ $marque->name }}</option> --}}
+                        <option value="{{$marque->id}}">{{$marque->nom}}</option>
+                    @endforeach
+                </select>
+                @error('marque')
                     <div class="">{{ $message }}</div>
                 @enderror
 
@@ -31,17 +36,14 @@
                     <div class="">{{ $message }}</div>
                 @enderror
 
-                <label for="longueur">Longueur :</label>
-                <input class="mb-2" type="text" name="longueur" id="longueur"
-                    value="{{ old('longueur', $produit->longueur) }}">
-                @error('longueur')
-                    <div class="">{{ $message }}</div>
-                @enderror
-
-                <label for="largeur">Largeur :</label>
-                <input class="mb-2" type="text" name="largeur" id="largeur"
-                    value="{{ old('largeur', $produit->largeur) }}">
-                @error('largeur')
+                <label for="dimension" class="block">Dimensions</label>
+                <select name="dimension" id="dimension" class="mb-2">
+                    @foreach ($dimensions as $dimension)
+                        {{-- <option @selected($marque->id == old('marque')) value="{{ $marque->id }}">{{ $marque->name }}</option> --}}
+                        <option value="{{$dimension->id}}">{{$dimension->taille}}</option>
+                    @endforeach
+                </select>
+                @error('marque')
                     <div class="">{{ $message }}</div>
                 @enderror
 

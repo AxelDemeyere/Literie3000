@@ -18,8 +18,10 @@
         </div>
         <div>
             <nav>
-                <a href="/produits"><button type="button" class="btn btn-outline-light">Catalogue</button></a>
-                <a href="/produits/creer"><button type="button" class="btn btn-outline-light">Ajout</button></a>
+                <a href="/produits"><button type="button" class="btn btn-outline-light">Produits</button></a>
+                <a href="/marques"><button type="button" class="btn btn-outline-light">Marques</button></a>
+                <a href="/dimensions"><button type="button" class="btn btn-outline-light">Dimensions</button></a>
+
             </nav>
 
         </div>

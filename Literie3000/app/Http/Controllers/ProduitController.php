@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dimension;
+use App\Models\Marque;
 use App\Models\Produit;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\Dimensions;
 
 class ProduitController extends Controller
 {
     public function index()
     {
         return view("produits/index", [
-            'produits' => Produit::all()
+            'produits' => Produit::with('marque')->get()
         ]);
     }
 
     public function create() 
     {
         return view('produits/create', [
-        'produits' => Produit::all()->sortBy('nom')
+        'marques' => Marque::all(),
+        'dimensions' => Dimension::all(),
         ]);
     }
 
@@ -25,19 +29,17 @@ class ProduitController extends Controller
 public function store(Request $request) {
     $request->validate([
         'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'nom' => 'required|min:1',
+        'marque' => 'required|min:1|exists:marques,id',
         'ref' => 'required|min:1',
-        'longueur' => 'required|integer|min:3',
-        'largeur' => 'required|integer|min:2',
+        'dimension' => 'required|integer|exists:dimensions,id',
         'remise' => 'nullable|integer|min:1',
         'prix' => 'required|integer|min:1',
         ]);
 
         $produit = new Produit();
-        $produit->nom = $request->nom;
+        $produit->marque_id = $request->marque;
         $produit->ref = $request->ref;
-        $produit->longueur = $request->longueur;
-        $produit->largeur = $request->largeur;
+        $produit->dimension_id = $request->dimension;
         $produit->remise = $request->remise;
         $produit->prix = $request->prix;
 
@@ -60,6 +62,8 @@ public function edit($id)
 
     return view('/produits/edit', [
         'produit' => $produit,
+        'marques' => Marque::all(),
+        'dimensions' => Dimension::all(),
 
     ]);
 }
@@ -70,18 +74,16 @@ public function update(Request $request, $id) {
 
     $request->validate([
         'photo' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'nom' => 'required|min:1',
+        'marque' => 'required|min:1|exists:marques,id',
         'ref' => 'required|min:1',
-        'longueur' => 'required|integer|min:3',
-        'largeur' => 'required|integer|min:2',
+        'dimension' => 'required|integer|exists:dimensions,id',
         'remise' => 'nullable|integer|min:1',
         'prix' => 'required|integer|min:1',
         ]);
 
-        $produit->nom = $request->nom;
+        $produit->marque_id = $request->marque;
         $produit->ref = $request->ref;
-        $produit->longueur = $request->longueur;
-        $produit->largeur = $request->largeur;
+        $produit->dimension_id = $request->dimension;
         $produit->remise = $request->remise;
         $produit->prix = $request->prix;
 
@@ -90,7 +92,7 @@ public function update(Request $request, $id) {
             $request->photo->move(public_path('photos'), $photoName);
             $produit->photo = $photoName;
         }
-        
+
         $produit->save();
 
         return redirect ('/produits');

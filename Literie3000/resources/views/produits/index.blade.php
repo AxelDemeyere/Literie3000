@@ -3,6 +3,7 @@
     <div class="mx-auto col-8">
         <div class="my-5">
             <h2>Nos produits</h2>
+            <p><a  href="/produits/creer">Ajouter un nouveau produit</a></p>
         </div>
         <div class="d-flex justify-content-center">
             <div class="d-flex flex-wrap gap-4 mx-auto justify-content-center">
@@ -10,7 +11,7 @@
                     <div class="card shadow mb-5" style="width: 18rem;">
                         <div class="card-body">
 
-                            <img src="/photos/{{ $produit->photo }}" class="card-img-top mb-2" alt="...">
+                            <img src="/photos/{{ $produit->photo }}" class="card-img-top mb-2" alt="{{$produit->photo}}">
                             <h5 class="card-title text-uppercase">{{ $produit->nom }}</h5>
                             <div class="d-flex justify-content-between flex-start">
                                 @if ($produit->remise > 0)
@@ -26,7 +27,7 @@
                                 @endif
                             </div>
                             <p class="card-text">Matelas {{ $produit->ref }} </p>
-                            <p class="card-text"> {{ $produit->longueur }}x{{ $produit->largeur }} </p>
+                            <p class="card-text"> {{$produit->dimension->taille}} </p>
                             <a href="/produit/{{ $produit->id }}/modifier" class="card-link">Modifier</a>
                             <a href="/produit/{{ $produit->id }}/supprimer" class="card-link">Supprimer</a>
                         </div>
